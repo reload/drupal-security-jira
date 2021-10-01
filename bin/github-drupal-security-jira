@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use GithubDrupalSecurityJira\SyncCommand;
+use Symfony\Component\Console\Application;
+
+$application = new Application('github-drupal-security-jira');
+$command = new SyncCommand('sync');
+
+$application->add($command);
+$application->setDefaultCommand('sync');
+$application->run();
