@@ -1,0 +1,14 @@
+{
+    "name": "reload/github-drupal-security-jira",
+    "description": "Create Jira tickets for vulnerable Drupal projects",
+    "type": "project",
+    "require": {
+        "symfony/console": "^5.3"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "GithubDrupalSecurityJira\\": "src/"
+        }
+    }
+}
