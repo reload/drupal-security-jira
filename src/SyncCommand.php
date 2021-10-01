@@ -11,9 +11,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 class SyncCommand extends Command
 {
 
-  public function execute(InputInterface $input, OutputInterface $output)
-  {
-    return  self::SUCCESS;
-  }
-
+    public function execute(InputInterface $input, OutputInterface $output): int
+    {
+        return self::SUCCESS;
+    }
 }
