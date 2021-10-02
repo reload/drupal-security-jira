@@ -5,7 +5,8 @@
     "require": {
         "symfony/console": "^5.3",
         "symfony/http-client": "^5.3",
-        "ext-openssl": "*"
+        "ext-openssl": "*",
+        "veewee/xml": "^1.0"
     },
     "license": "MIT",
     "autoload": {

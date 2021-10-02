@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GithubDrupalSecurityJira;
 
+use GithubDrupalSecurityJira\DrupalOrg\ProjectFetcher;
 use GithubDrupalSecurityJira\SiteStatus\Fetcher;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -44,7 +45,25 @@ class SyncCommand extends Command
         );
         $data = $fetcher->fetch();
 
-        $logger->debug(print_r($data->getProjectVersionMap(), true));
+        $projectVersionMap = $data->getProjectVersionMap();
+
+        $projectFetcher = new ProjectFetcher(HttpClient::create());
+
+        $insecureProjectVersionMap = array_filter(
+            $projectVersionMap,
+            function ($version, $project) use ($projectFetcher): bool {
+                if (!$projectFetcher->hasReleaseHistory($project)) {
+                    return false;
+                }
+
+                $secureVersions = $projectFetcher->getSecureVersions($project);
+
+                return !in_array($version, $secureVersions);
+            },
+            ARRAY_FILTER_USE_BOTH
+        );
+
+        $logger->debug(print_r($insecureProjectVersionMap, true));
 
         return self::SUCCESS;
     }
