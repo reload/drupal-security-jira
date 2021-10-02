@@ -3,7 +3,9 @@
     "description": "Create Jira tickets for vulnerable Drupal projects",
     "type": "project",
     "require": {
-        "symfony/console": "^5.3"
+        "symfony/console": "^5.3",
+        "symfony/http-client": "^5.3",
+        "ext-openssl": "*"
     },
     "license": "MIT",
     "autoload": {
