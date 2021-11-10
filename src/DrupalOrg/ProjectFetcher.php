@@ -12,26 +12,33 @@ class ProjectFetcher
         private HttpClientInterface $client,
     ) {}
 
-    public function hasReleaseHistory(string $project) {
-        $data = $this->getReleaseHistory($project);
+    public function hasReleaseHistory(string $project, string $drupalVersion): bool
+    {
+        $data = $this->getReleaseHistory($project, $drupalVersion);
         return !isset($data['error']) || !str_contains($data['error'], "No release history");
     }
 
-    public function getSecureVersions(string $project): array {
-        $data = $this->getReleaseHistory($project);
+    /**
+     * @return string[]
+     */
+    public function getSecureVersions(string $project, string $drupalVersion): array
+    {
+        $data = $this->getReleaseHistory($project, $drupalVersion);
         if (isset($data['error'])) {
             throw new \RuntimeException($data['error']);
         }
 
-        $releases = isset($data['project']['releases']['release']) ? $this->xmlDataToArray($data['project']['releases']['release']) : [];
+        $releases = isset($data['project']['releases']['release']) ?
+            $this->xmlDataToArray($data['project']['releases']['release']) :
+            [];
 
         $secureReleases = array_filter(
             $releases,
-            function (array $release) {
+            function (array $release): bool {
                 $terms = isset($release['terms']['term']) ? $this->xmlDataToArray($release['terms']['term']) : [];
                 return array_reduce(
                     $terms,
-                    function ($isSecure, array $term) {
+                    function ($isSecure, array $term): bool {
                         return $isSecure &&
                             (
                                 $term &&
@@ -44,18 +51,36 @@ class ProjectFetcher
             }
         );
 
-        $secureVersions = array_map(
-            function (array $release) {
-                return $release['version'];
+        return array_map(
+            function (array $release): string {
+                return (string) $release['version'];
             },
             $secureReleases
         );
-
-        return $secureVersions;
     }
 
-    private function getReleaseHistory(string $project): array {
-        $response = $this->client->request("GET", "https://updates.drupal.org/release-history/{$project}/current");
+    public function isSecure(string $project, string $version, string $drupalVersion): bool
+    {
+        return in_array($version, $this->getSecureVersions($project, $drupalVersion));
+    }
+
+    public function getSecureVersion(string $project, string $version, string $drupalVersion): string
+    {
+        $secureVersion = new VersionGroup(
+            $this->getSecureVersions($project, $drupalVersion)
+        );
+        return $secureVersion->getNextVersion($version);
+    }
+
+    /**
+     * @return mixed[]
+     */
+    private function getReleaseHistory(string $project, string $drupalVersion): array
+    {
+        $response = $this->client->request(
+            "GET",
+            "https://updates.drupal.org/release-history/{$project}/all"
+        );
         return xml_decode($response->getContent());
     }
 
@@ -68,8 +93,13 @@ class ProjectFetcher
      * array.
      *
      * If there are no subelements then an empty array is returned.
+     *
+     * @param mixed[] $element
+     *
+     * @return mixed[]
      */
-    private function xmlDataToArray(array $element): array {
+    private function xmlDataToArray(array $element): array
+    {
         if (!$element) {
             return [];
         }

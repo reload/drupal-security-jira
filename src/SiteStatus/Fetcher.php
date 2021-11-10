@@ -32,7 +32,7 @@ class Fetcher
         }
 
         // @var string $key
-        $data = match ($data->system_status) {
+        $projectData = match ($data->system_status) {
             // @phpstan-ignore-next-line $key will always be a string
             "encrypted_openssl" => new OpenSSLEncryptedData($data, $key),
             // @phpstan-ignore-next-line $key will always be a string
@@ -40,6 +40,6 @@ class Fetcher
             default => new UnencryptedData($data)
         };
 
-        return new SiteData($data);
+        return new SiteData((int) $data->drupal_version, $projectData);
     }
 }

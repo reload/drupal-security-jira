@@ -8,8 +8,14 @@ class SiteData
 {
 
     public function __construct(
+        private int $drupalVersion,
         private Data $data
     ) {
+    }
+
+    public function getDrupalVersion(): string
+    {
+        return "{$this->drupalVersion}.x";
     }
 
     /**

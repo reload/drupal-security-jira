@@ -6,7 +6,9 @@
         "symfony/console": "^5.3",
         "symfony/http-client": "^5.3",
         "ext-openssl": "*",
-        "veewee/xml": "^1.0"
+        "veewee/xml": "^1.0",
+        "reload/jira-security-issue": "^1.0",
+        "composer/semver": "^3.2"
     },
     "license": "MIT",
     "autoload": {
