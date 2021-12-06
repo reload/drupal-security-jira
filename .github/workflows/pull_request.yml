@@ -12,17 +12,12 @@ jobs:
         with:
           php-version: 8.0
           coverage: none
-      - name: Install Reviewdog
-        run: |
-          wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b $PWD/ latest
       - name: Install Dependencies
-        run: |
-          composer install --no-interaction --no-progress
-      - name: Check codestyle
-        run: |
-          vendor/bin/phpcs --report=checkstyle | ./reviewdog -f=checkstyle -name=PHPCS -reporter=github-pr-check
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: composer install --no-interaction --no-progress
+      - name: Run phpcs
+        uses: reload/action-phpcs@main
+        with:
+          reviewdog_token: ${{ secrets.GITHUB_TOKEN }}
 
   static_code_analysis:
     name: Static Code Analysis
@@ -45,3 +40,10 @@ jobs:
           php -d memory_limit=1G vendor/bin/phpstan analyse . --error-format=checkstyle | ./reviewdog -f=checkstyle -name=PHPStan -reporter=github-pr-check
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  hadolint:
+    name: Hadolint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hadolint/hadolint-action@v1.6.0

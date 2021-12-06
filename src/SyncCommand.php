@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DrupalSecurityJira;
 
+use Dotenv\Dotenv;
 use DrupalSecurityJira\DrupalOrg\ProjectFetcher;
 use DrupalSecurityJira\SiteStatus\Fetcher;
 use Reload\JiraSecurityIssue;
@@ -17,48 +18,28 @@ use Symfony\Component\HttpClient\HttpClient;
 class SyncCommand extends Command
 {
 
-    protected function configure(): void
-    {
-        $this
-            ->addOption(
-                "host",
-                null,
-                InputOption::VALUE_REQUIRED,
-            )
-            ->addOption(
-                "token",
-                null,
-                InputOption::VALUE_REQUIRED,
-            )
-            ->addOption(
-                "key",
-                null,
-                InputOption::VALUE_OPTIONAL,
-            )
-            ->addOption(
-                "watchers",
-                null,
-                InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY
-            )
-            ->addOption(
-                "dry-run",
-                null,
-                InputOption::VALUE_NONE,
-            );
-    }
-
     public function execute(InputInterface $input, OutputInterface $output): int
     {
+        // Use create*Unsafe*Immutable() since it is required to support
+        // getenv() which is used by reload/jira-security-issue.
+        $env = Dotenv::createUnsafeImmutable(__DIR__ . '/../');
+        $env->safeLoad();
+        $env->required(['HOST', 'TOKEN', 'KEY'])->notEmpty();
+        $env->ifPresent('DRY_RUN')->isBoolean();
+
+        $host = getenv('HOST', true) ?: '';
+        $token = getenv('TOKEN', true) ?: '';
+        $key = getenv('KEY', true) ?: '';
+        $dry_run = (bool) getenv('DRY_RUN', true);
+
         $logger = new ConsoleLogger($output);
 
-        $host = $input->getOption("host");
         $logger->debug("Fetching data from {$host}");
-
         $fetcher = new Fetcher(
             HttpClient::create(),
             $host,
-            $input->getOption("token"),
-            $input->getOption("key")
+            $token,
+            $key
         );
         $data = $fetcher->fetch();
 
@@ -91,9 +72,7 @@ class SyncCommand extends Command
             }
         );
 
-        array_map(function ($project, $version) use ($input, $host, $logger) {
-            $watchers = $input->getOption('watchers');
-
+        array_map(function ($project, $version) use ($host, $logger, $dry_run) {
             // phpcs:disable Generic.Files.LineLength.TooLong
             $body = <<<EOT
 - Site: [{$host}]
@@ -108,11 +87,7 @@ EOT;
                 ->setTitle("{$project} ({$version})")
                 ->setBody($body);
 
-            foreach ($watchers as $watcher) {
-                $issue->setWatcher($watcher);
-            }
-
-            if (!$input->getOption('dry-run')) {
+            if (!$dry_run) {
                 $issueId = $issue->ensure();
                 $logger->info('Created issue {issue_id}', ['issue_id' => $issueId]);
             } else {
