@@ -6,6 +6,8 @@ namespace GithubDrupalSecurityJira\SiteStatus;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+use function Safe\json_decode;
+
 class Fetcher
 {
 

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace GithubDrupalSecurityJira\SiteStatus;
 
+use function Safe\json_decode;
+use function Safe\substr;
+
 class OpenSSLEncryptedData implements Data
 {
     public function __construct(

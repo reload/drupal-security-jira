@@ -1,9 +1,12 @@
 <?php
 
-namespace GithubDrupalSecurityJira\DrupalOrg;
+namespace DrupalSecurityJira\DrupalOrg;
 
 use Composer\Semver\Comparator;
 use Composer\Semver\Semver;
+
+use function Safe\array_combine;
+use function Safe\preg_replace;
 
 class VersionGroup
 {
@@ -13,18 +16,20 @@ class VersionGroup
      */
     public function __construct(
         private array $versions
-    ) {}
+    ) {
+    }
 
     private function normalizeVersion(string $version): string
     {
         return preg_replace('/^\d\.x\-/', '', $version);
     }
 
-    public function getNextVersion(string $currentVersion) {
+    public function getNextVersion(string $currentVersion): string
+    {
         $versions = array_combine($this->versions, $this->versions);
 
         $normalizedVersions = array_map(function (string $version): string {
-           return $this->normalizeVersion($version);
+            return $this->normalizeVersion($version);
         }, $versions);
         $normalizedCurrentVersion = $this->normalizeVersion($currentVersion);
 
@@ -36,6 +41,10 @@ class VersionGroup
         );
 
         $nextVersions = Semver::sort($nextVersions);
-        return current(array_keys($nextVersions));
+        $nextVersion = current(array_keys($nextVersions));
+        if (!is_string($nextVersion)) {
+            throw new \RuntimeException("Unexpected value for next version $nextVersion.");
+        }
+        return $nextVersion;
     }
 }

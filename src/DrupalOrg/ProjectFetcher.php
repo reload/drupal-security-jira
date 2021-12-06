@@ -3,6 +3,7 @@
 namespace GithubDrupalSecurityJira\DrupalOrg;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+
 use function VeeWee\Xml\Encoding\xml_decode;
 
 class ProjectFetcher
@@ -10,7 +11,8 @@ class ProjectFetcher
 
     public function __construct(
         private HttpClientInterface $client,
-    ) {}
+    ) {
+    }
 
     public function hasReleaseHistory(string $project, string $drupalVersion): bool
     {
@@ -109,5 +111,4 @@ class ProjectFetcher
 
         return $element;
     }
-
 }
