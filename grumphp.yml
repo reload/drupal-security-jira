@@ -1,4 +1,7 @@
 grumphp:
+    ascii:
+        failed: ~
+        succeeded: ~
     tasks:
         phpstan: []
         phpcs: []
