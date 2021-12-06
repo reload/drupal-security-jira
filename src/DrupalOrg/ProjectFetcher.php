@@ -1,6 +1,6 @@
 <?php
 
-namespace GithubDrupalSecurityJira\DrupalOrg;
+namespace DrupalSecurityJira\DrupalOrg;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 

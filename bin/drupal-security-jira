@@ -3,10 +3,10 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-use GithubDrupalSecurityJira\SyncCommand;
+use DrupalSecurityJira\SyncCommand;
 use Symfony\Component\Console\Application;
 
-$application = new Application('github-drupal-security-jira');
+$application = new Application('drupal-security-jira');
 $command = new SyncCommand('sync');
 
 $application->add($command);
