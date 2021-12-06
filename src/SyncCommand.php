@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GithubDrupalSecurityJira;
+namespace DrupalSecurityJira;
 
-use GithubDrupalSecurityJira\DrupalOrg\ProjectFetcher;
-use GithubDrupalSecurityJira\SiteStatus\Fetcher;
+use DrupalSecurityJira\DrupalOrg\ProjectFetcher;
+use DrupalSecurityJira\SiteStatus\Fetcher;
 use Reload\JiraSecurityIssue;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

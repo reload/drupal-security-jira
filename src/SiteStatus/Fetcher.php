@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace GithubDrupalSecurityJira\SiteStatus;
+namespace DrupalSecurityJira\SiteStatus;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+
+use function Safe\json_decode;
 
 class Fetcher
 {

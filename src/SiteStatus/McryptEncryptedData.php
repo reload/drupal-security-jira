@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GithubDrupalSecurityJira\SiteStatus;
+namespace DrupalSecurityJira\SiteStatus;
+
+use function Safe\json_decode;
+use function Safe\substr;
 
 class McryptEncryptedData implements Data
 {
@@ -17,6 +20,6 @@ class McryptEncryptedData implements Data
     {
         $data = mcrypt_decrypt(\MCRYPT_RIJNDAEL_128, $this->key, $this->data->data, MCRYPT_MODE_CBC);
 
-        return json_decode(\substr($data, 16));
+        return json_decode(substr($data, 16));
     }
 }
