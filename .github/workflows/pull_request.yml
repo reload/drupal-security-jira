@@ -47,3 +47,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: hadolint/hadolint-action@v1.6.0
+
+  markdown_lint:
+    name: Markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - name: Install problem matcher
+        uses: xt0rted/markdownlint-problem-matcher@v1
+      - name: Lint README.md file
+        uses: nosborn/github-action-markdown-cli@v2.0.0
+        with:
+          files: './README.md'
