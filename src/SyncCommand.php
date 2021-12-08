@@ -6,7 +6,7 @@ namespace DrupalSecurityJira;
 
 use Dotenv\Dotenv;
 use DrupalSecurityJira\DrupalOrg\ProjectFetcher;
-use DrupalSecurityJira\SiteStatus\Fetcher;
+use DrupalSecurityJira\SystemStatus\Fetcher;
 use Reload\JiraSecurityIssue;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
