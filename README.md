@@ -20,14 +20,15 @@ If JIRA ticket for a security update already exists it will not be recreated.
 2. Configure the tool with environment variables or an `.env` file. The
    following keys are supported:
 
-   - `HOST`: The host name of the Drupal site to check, e.g. `reload.dk`
+   - `DRUPAL_HOST`: The host name of the Drupal site to check, e.g. `reload.dk`
      (**REQUIRED**)
-   - `TOKEN`: The token used to retrieve data exposed by the System Status
-     module. This is the part of the site UUID before the `-` as reported on
-     <https://reload.dk/admin/config/system/system-status> (**REQUIRED**)
-   - `KEY`: The key used to decrypt data exposed by the System Status module
-     (**REQUIRED**). This is the part of the site UUID before the `-` as
-     reported on <https://foo.com/admin/config/system/system-status>
+   - `SYSTEM_STATUS_TOKEN`: The token used to retrieve data exposed by the
+     System Status module. This is the part of the site UUID before the `-` as
+     reported on <https://reload.dk/admin/config/system/system-status>
+     (**REQUIRED**)
+   - `SYSTEM_STATUS_KEY`: The key used to decrypt data exposed by the System
+     Status module (**REQUIRED**). This is the part of the site UUID before the
+     `-` as reported on <https://foo.com/admin/config/system/system-status>
    - `JIRA_HOST`: The endpoint for your JIRA instance, e.g.
      <https://reload.atlassian.net> (**REQUIRED**)
    - `JIRA_USER`: The ID of the JIRA user which is associated with `JIRA_TOKEN`
@@ -43,6 +44,7 @@ If JIRA ticket for a security update already exists it will not be recreated.
      Defaults to `Developers`. (*Optional*)
    - `DRY_RUN`: Do not actually create any tickets but report that they would be
      created. Defaults to `FALSE`. (*Optional*)
+
 3. Run `./bin/drupal-security-jira sync`
 
 ## Setup on GitHub Actions
@@ -64,10 +66,10 @@ in the repo:
 
 1. `JiraApiToken` containing an [API Token](https://confluence.atlassian.com/cloud/api-tokens-938839638.html)
    for the JIRA user that should be used to create tickets.
-2. `Token` containing the part of the site UUID before the `-` as reported on
-   `/admin/config/system/system-status`
-3. `Key` containing the part of the site UUID after the `-` as reported on
-   `/admin/config/system/system-status`
+2. `SystemStatusToken` containing the part of the site UUID before the `-` as
+   reported on `/admin/config/system/system-status`
+3. `SystemStatusKey` containing the part of the site UUID after the `-` as
+   reported on `/admin/config/system/system-status`
 
 ### Workflow file setup
 
@@ -90,9 +92,9 @@ jobs:
       - name: "Sync JIRA security issues from Drupal security updates"
         uses: reload/github-security-jira
         env:
-          HOST: reload.dk
-          TOKEN: ${{ secrets.Token }}
-          KEY: ${{ secrets.Key }}
+          DRUPAL_HOST: reload.dk
+          SYSTEM_STATUS_TOKEN: ${{ secrets.Token }}
+          SYSTEM_STATUS_KEY: ${{ secrets.Key }}
           JIRA_TOKEN: ${{ secrets.JiraApiToken }}
           JIRA_HOST: https://reload.atlassian.net
           JIRA_USER: someuser@reload.dk
