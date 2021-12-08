@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DrupalSecurityJira\SiteStatus;
+namespace DrupalSecurityJira\SystemStatus;
 
 use function Safe\json_decode;
 use function Safe\substr;

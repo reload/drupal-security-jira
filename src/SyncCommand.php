@@ -6,11 +6,10 @@ namespace DrupalSecurityJira;
 
 use Dotenv\Dotenv;
 use DrupalSecurityJira\DrupalOrg\ProjectFetcher;
-use DrupalSecurityJira\SiteStatus\Fetcher;
+use DrupalSecurityJira\SystemStatus\Fetcher;
 use Reload\JiraSecurityIssue;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpClient\HttpClient;
@@ -24,12 +23,12 @@ class SyncCommand extends Command
         // getenv() which is used by reload/jira-security-issue.
         $env = Dotenv::createUnsafeImmutable(__DIR__ . '/../');
         $env->safeLoad();
-        $env->required(['HOST', 'TOKEN', 'KEY'])->notEmpty();
+        $env->required(['DRUPAL_HOST', 'SYSTEM_STATUS_TOKEN', 'SYSTEM_STATUS_KEY'])->notEmpty();
         $env->ifPresent('DRY_RUN')->isBoolean();
 
-        $host = getenv('HOST', true) ?: '';
-        $token = getenv('TOKEN', true) ?: '';
-        $key = getenv('KEY', true) ?: '';
+        $host = getenv('DRUPAL_HOST', true) ?: '';
+        $token = getenv('SYSTEM_STATUS_TOKEN', true) ?: '';
+        $key = getenv('SYSTEM_STATUS_KEY', true) ?: '';
         $dry_run = (bool) getenv('DRY_RUN', true);
 
         $logger = new ConsoleLogger($output);

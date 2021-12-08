@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DrupalSecurityJira\SiteStatus;
+namespace DrupalSecurityJira\SystemStatus;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
