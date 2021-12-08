@@ -59,3 +59,13 @@ jobs:
         uses: nosborn/github-action-markdown-cli@v2.0.0
         with:
           files: './README.md'
+
+  docker_build:
+    name: Test Docker build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build docker image
+        run: docker build -t reload/drupal-security-jira:test .
+      - name: Test image
+        run: docker run --rm reload/drupal-security-jira:test --version
