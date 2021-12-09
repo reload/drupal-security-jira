@@ -21,7 +21,7 @@ class VersionGroup
 
     private function normalizeVersion(string $version): string
     {
-        return preg_replace('/^\d\.x\-/', '', $version);
+        return preg_replace('/^\d\.(\d\.)?x\-/', '', $version);
     }
 
     public function getNextVersion(string $currentVersion): string
@@ -41,7 +41,7 @@ class VersionGroup
         );
 
         $nextVersions = Semver::sort($nextVersions);
-        $nextVersion = current(array_keys($nextVersions));
+        $nextVersion = current($nextVersions);
         if (!is_string($nextVersion)) {
             throw new \RuntimeException("Unexpected value for next version $nextVersion.");
         }

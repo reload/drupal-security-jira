@@ -47,28 +47,43 @@ class SyncCommand extends Command
 
         $projectFetcher = new ProjectFetcher(HttpClient::create());
 
-        $insecureProjectVersionMap = array_filter(
-            $projectVersionMap,
-            function (string $version, string $project) use ($projectFetcher, $data): bool {
-                if (!$projectFetcher->hasReleaseHistory($project, $data->getDrupalVersion())) {
-                    return false;
-                }
+        $filters = [
+            "Identify projects on Drupal.org" =>
+                function (string $version, string $project) use ($projectFetcher, $data): bool {
+                    return $projectFetcher->hasReleaseHistory($project, $data->getDrupalVersion());
+                },
+            "Identify projects with official versions" =>
+                function (string $version, string $project) use ($projectFetcher, $data): bool {
+                    return $projectFetcher->isKnownVersion($project, $version, $data->getDrupalVersion());
+                },
+            "Identify insecure projects" =>
+                function (string $version, string $project) use ($projectFetcher, $data): bool {
+                    return !$projectFetcher->isSecure($project, $version, $data->getDrupalVersion());
+                },
+        ];
 
-                return !$projectFetcher->isSecure($project, $version, $data->getDrupalVersion());
-            },
-            ARRAY_FILTER_USE_BOTH
-        );
-        $logger->info(
-            "Identified insecure projects: {projects}",
-            ['projects' => print_r($insecureProjectVersionMap, true)]
-        );
+        foreach ($filters as $description => $filter) {
+            $projectVersionMap = array_filter($projectVersionMap, $filter, ARRAY_FILTER_USE_BOTH);
+            $logger->notice(
+                "{description}: {projects}",
+                [
+                    'description' => $description,
+                    'projects' => print_r($projectVersionMap, true)
+                ]
+            );
+        }
 
-        $securedProjectsVersionMap = $insecureProjectVersionMap;
+        $securedProjectsVersionMap = $projectVersionMap;
         array_walk(
             $securedProjectsVersionMap,
-            function (string $version, string $project) use ($projectFetcher, $data): string {
-                return $projectFetcher->getSecureVersion($project, $version, $data->getDrupalVersion());
+            function (string &$version, string $project) use ($projectFetcher, $data): void {
+                $version = $projectFetcher->getSecureVersion($project, $version, $data->getDrupalVersion());
             }
+        );
+
+        $logger->info(
+            'Identified security updates {projects}',
+            ['projects' => print_r($securedProjectsVersionMap, true)]
         );
 
         array_map(function ($project, $version) use ($host, $logger, $dry_run) {

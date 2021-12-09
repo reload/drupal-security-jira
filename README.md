@@ -66,10 +66,10 @@ in the repo:
 
 1. `JiraApiToken` containing an [API Token](https://confluence.atlassian.com/cloud/api-tokens-938839638.html)
    for the JIRA user that should be used to create tickets.
-2. `Token` containing the part of the site UUID before the `-` as reported on
-   `/admin/config/system/system-status`
-3. `Key` containing the part of the site UUID after the `-` as reported on
-   `/admin/config/system/system-status`
+2. `SystemStatusToken` containing the part of the site UUID before the `-` as
+   reported on `/admin/config/system/system-status`
+3. `SystemStatusKey` containing the part of the site UUID after the `-` as
+   reported on `/admin/config/system/system-status`
 
 ### Workflow file setup
 
