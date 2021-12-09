@@ -14,16 +14,10 @@ class ProjectFetcher
     ) {
     }
 
-    public function hasReleaseHistory(string $project, string $drupalVersion): bool
-    {
-        $data = $this->getReleaseHistory($project, $drupalVersion);
-        return !isset($data['error']) || !str_contains($data['error'], "No release history");
-    }
-
     /**
-     * @return string[]
+     * @return mixed[]
      */
-    public function getSecureVersions(string $project, string $drupalVersion): array
+    protected function getReleases(string $project, string $drupalVersion): array
     {
         $data = $this->getReleaseHistory($project, $drupalVersion);
         if (isset($data['error'])) {
@@ -33,6 +27,42 @@ class ProjectFetcher
         $releases = isset($data['project']['releases']['release']) ?
             $this->xmlDataToArray($data['project']['releases']['release']) :
             [];
+
+        return $releases;
+    }
+
+    public function hasReleaseHistory(string $project, string $drupalVersion): bool
+    {
+        $data = $this->getReleaseHistory($project, $drupalVersion);
+        return !isset($data['error']) || !str_contains($data['error'], "No release history");
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getVersions(string $project, string $drupalVersion): array
+    {
+        $releases = $this->getReleases($project, $drupalVersion);
+
+        return array_map(
+            function (array $release): string {
+                return (string) $release['version'];
+            },
+            $releases
+        );
+    }
+
+    public function isKnownVersion(string $project, string $version, string $drupalVersion): bool
+    {
+        return in_array($version, $this->getVersions($project, $drupalVersion));
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getSecureVersions(string $project, string $drupalVersion): array
+    {
+        $releases = $this->getReleases($project, $drupalVersion);
 
         $secureReleases = array_filter(
             $releases,
