@@ -21,7 +21,7 @@ class VersionGroup
 
     private function normalizeVersion(string $version): string
     {
-        return preg_replace('/^\d\.x\-/', '', $version);
+        return preg_replace('/^\d\.(\d\.)?x\-/', '', $version);
     }
 
     public function getNextVersion(string $currentVersion): string
