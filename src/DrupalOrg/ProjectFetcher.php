@@ -9,6 +9,12 @@ use function VeeWee\Xml\Encoding\xml_decode;
 class ProjectFetcher
 {
 
+    /**
+     * @var array[]
+     *   Project release history cache.
+     */
+    protected $cache = [];
+
     public function __construct(
         private HttpClientInterface $client,
     ) {
@@ -109,11 +115,19 @@ class ProjectFetcher
      */
     private function getReleaseHistory(string $project, string $drupalVersion): array
     {
+        $cacheId = "$project-$drupalVersion";
+        if (isset($this->cache[$cacheId])) {
+            return $this->cache[$cacheId];
+        }
+
         $response = $this->client->request(
             "GET",
             "https://updates.drupal.org/release-history/{$project}/all"
         );
-        return xml_decode($response->getContent());
+        $data = xml_decode($response->getContent());
+
+        $this->cache[$cacheId] = $data;
+        return $data;
     }
 
     /**
