@@ -93,8 +93,8 @@ jobs:
         uses: reload/github-security-jira
         env:
           DRUPAL_HOST: reload.dk
-          SYSTEM_STATUS_TOKEN: ${{ secrets.Token }}
-          SYSTEM_STATUS_KEY: ${{ secrets.Key }}
+          SYSTEM_STATUS_TOKEN: ${{ secrets.SystemStatusToken }}
+          SYSTEM_STATUS_KEY: ${{ secrets.SystemStatusKey }}
           JIRA_TOKEN: ${{ secrets.JiraApiToken }}
           JIRA_HOST: https://reload.atlassian.net
           JIRA_USER: someuser@reload.dk
