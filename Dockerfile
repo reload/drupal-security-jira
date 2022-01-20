@@ -23,4 +23,4 @@ RUN chmod +x /usr/local/bin/install-php-extensions && \
 COPY --from=build-env /opt/drupal-security-jira /opt/drupal-security-jira
 
 ENTRYPOINT ["/opt/drupal-security-jira/bin/drupal-security-jira"]
-CMD []
+CMD ["--verbose"]
