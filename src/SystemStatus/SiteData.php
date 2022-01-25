@@ -19,7 +19,7 @@ class SiteData
     }
 
     /**
-     * @return string[]
+     * @return array<string, string|null>
      */
     public function getProjectVersionMap(): array
     {
@@ -43,6 +43,6 @@ class SiteData
             ARRAY_FILTER_USE_BOTH
         );
 
-        return array_filter($filteredVersionMap);
+        return $filteredVersionMap;
     }
 }

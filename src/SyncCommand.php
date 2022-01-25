@@ -45,6 +45,15 @@ class SyncCommand extends Command
         $projectVersionMap = $data->getProjectVersionMap();
         $logger->debug("Retrieved projects: {projects}", ['projects' => print_r($projectVersionMap, true)]);
 
+        // Log projects with no known version.
+        $unknownProjects = array_filter($projectVersionMap, 'is_null');
+        $logger->notice('Projects with no known version: {projects}', [
+            'projects' => print_r(array_keys($unknownProjects), true),
+        ]);
+
+        // Filter away projects with no known version.
+        $projectVersionMap = array_filter($projectVersionMap);
+
         $projectFetcher = new ProjectFetcher(HttpClient::create());
 
         $filters = [
