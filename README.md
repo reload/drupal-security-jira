@@ -76,29 +76,41 @@ in the repo:
 The [GitHub workflow file](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/configuring-a-workflow#creating-a-workflow-file)
 should reside in any repo where you want to sync security alerts with Jira.
 
-Here is an example setup which runs this action every 6 hours.
+Here is an example setup which runs this action every 6 hours and also
+exposes a `workflow_dispatch` event for manual triggering a run.
+
+The manual run is useful to perform checks in between the 6 hour
+intervals in cases of very critical security issues and for testing
+(the dry run mode).
 
 ```yaml
-name: Drupal security updates for Jira
+name: Drupal Security Alerts for Jira
 
 on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Dry run
+        required: true
+        default: "1"
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: "0 */6 * * *"
 
 jobs:
   syncDrupalSecurityUpdates:
     runs-on: ubuntu-latest
     steps:
       - name: "Sync JIRA security issues from Drupal security updates"
-        uses: reload/github-security-jira
+        uses: reload/drupal-security-jira@main
         env:
-          DRUPAL_HOST: reload.dk
+          DRUPAL_HOST: example.com
           SYSTEM_STATUS_TOKEN: ${{ secrets.SystemStatusToken }}
           SYSTEM_STATUS_KEY: ${{ secrets.SystemStatusKey }}
           JIRA_TOKEN: ${{ secrets.JiraApiToken }}
           JIRA_HOST: https://reload.atlassian.net
-          JIRA_USER: someuser@reload.dk
+          JIRA_USER: someone@reload.dk
           JIRA_PROJECT: ABC
           JIRA_ISSUE_TYPE: Security
-          JIRA_WATCHERS: someuser@reload.dk,someotheruser@reload.dk
+          JIRA_WATCHERS: customer@example.com,boss@example.com
+          DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
 ```
