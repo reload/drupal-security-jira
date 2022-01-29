@@ -49,7 +49,7 @@ class VersionGroup
             }
         );
 
-        $nextVersions = Semver::sort($nextVersions);
+        $nextVersions = Semver::rsort($nextVersions);
         $nextVersion = current($nextVersions);
         if (!is_string($nextVersion)) {
             throw new \RuntimeException("Unexpected value for next version $nextVersion.");
