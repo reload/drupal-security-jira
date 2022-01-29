@@ -45,7 +45,7 @@ class VersionGroup
         $nextVersions = array_filter(
             $normalizedVersions,
             function (string $version) use ($normalizedCurrentVersion): bool {
-                return Comparator::greaterThanOrEqualTo($version, $normalizedCurrentVersion);
+                return Comparator::greaterThan($version, $normalizedCurrentVersion);
             }
         );
 
