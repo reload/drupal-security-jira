@@ -107,7 +107,7 @@ class ProjectFetcher
         $secureVersion = new VersionGroup(
             $this->getSecureVersions($project, $drupalVersion)
         );
-        return $secureVersion->getNextVersion($version);
+        return $secureVersion->getNextVersion($version, ($project !== 'drupal'));
     }
 
     /**

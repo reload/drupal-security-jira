@@ -33,7 +33,7 @@ class VersionGroup
         return str_replace($normalizedReference, $normalizedVersion, $referenceVersion);
     }
 
-    public function getNextVersion(string $currentVersion): string
+    public function getNextVersion(string $currentVersion, bool $bumpMajor = true): string
     {
         $versions = array_combine($this->versions, $this->versions);
 
@@ -48,6 +48,10 @@ class VersionGroup
                 return Comparator::greaterThan($version, $normalizedCurrentVersion);
             }
         );
+
+        if (!$bumpMajor) {
+            $nextVersions = Semver::satisfiedBy($nextVersions, "^${normalizedCurrentVersion}");
+        }
 
         $nextVersions = Semver::rsort($nextVersions);
         $nextVersion = current($nextVersions);
