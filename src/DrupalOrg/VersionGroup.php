@@ -5,9 +5,20 @@ namespace DrupalSecurityJira\DrupalOrg;
 use Composer\Semver\Comparator;
 use Composer\Semver\Semver;
 
-use function Safe\array_combine;
+use function Safe\preg_match;
 use function Safe\preg_replace;
 
+/**
+ * A version group represents a set of versions.
+ *
+ * In this context it will usually be versions of a specific project on
+ * Drupal.org.
+ *
+ * Multiple version schemes are supported:
+ *
+ * - Semantic versions ({major}.{minor}.{patch}[-(alpha|beta|RC){number}])
+ * - Legacy Drupal version numbers ({API compatibility}-{major}.{minor}[-(alpha|beta|RC){number}])
+ */
 class VersionGroup
 {
 
@@ -24,37 +35,72 @@ class VersionGroup
         return preg_replace('/^\d\.(\d\.)?x\-/', '', $version);
     }
 
-    private function denormalizeVersion(string $normalizedVersion, string $referenceVersion): string
+    /**
+     * Prepare a map normalized version to real/original versions.
+     *
+     * A normalized version is a semver version which we can sort in
+     * later. Legacy versions (e.g. 7.x-2.1) has the core version
+     * removed to form a normalized semver version.
+     *
+     * Legacy versions not matching the core version of the current
+     * version are removed.
+     *
+     * @param string $currentVersion
+     * @param string[] $versions
+     *
+     * @return array<string,string>
+     */
+    private function prepareVersions(string $currentVersion, array $versions): array
     {
-        $normalizedReference = $this->normalizeVersion($referenceVersion);
-        // Assume that a normalized version is a stripped down version of a
-        // reference and we can denormalize any version by replacing any version
-        // into a reference.
-        return str_replace($normalizedReference, $normalizedVersion, $referenceVersion);
+        $coreVersion = preg_replace('/^(\d\.(\d\.)?x)\-.*/', '\1', $currentVersion);
+        $result = [];
+
+        foreach ($versions as $version) {
+            // Skip the version if it is a legacy version and it
+            // doesn't match the current versions core version.
+            if (preg_match('/\.x-/', $version) && !preg_match('/^' . preg_quote($coreVersion, '/') . '/', $version)) {
+                continue;
+            }
+
+            $result[$this->normalizeVersion($version)] = $version;
+        }
+
+        return $result;
     }
 
+    /**
+     * Determine which version in this set which most closely matches a given version.
+     *
+     * This only takes the current and newer versions into account.
+     *
+     * @param string $currentVersion
+     *   The given version.
+     *
+     * @return string
+     *   The closest match to the provided version.
+     *
+     * @throws \RuntimeException
+     *   If a match cannot be determined.
+     */
     public function getNextVersion(string $currentVersion): string
     {
-        $versions = array_combine($this->versions, $this->versions);
-
-        $normalizedVersions = array_map(function (string $version): string {
-            return $this->normalizeVersion($version);
-        }, $versions);
+        $versions = $this->prepareVersions($currentVersion, $this->versions);
         $normalizedCurrentVersion = $this->normalizeVersion($currentVersion);
 
         $nextVersions = array_filter(
-            $normalizedVersions,
+            $versions,
             function (string $version) use ($normalizedCurrentVersion): bool {
                 return Comparator::greaterThanOrEqualTo($version, $normalizedCurrentVersion);
-            }
+            },
+            ARRAY_FILTER_USE_KEY,
         );
 
-        $nextVersions = Semver::sort($nextVersions);
-        $nextVersion = current($nextVersions);
+        $sortedVersions = Semver::sort(array_keys($nextVersions));
+        $nextVersion = current($sortedVersions);
         if (!is_string($nextVersion)) {
             throw new \RuntimeException("Unexpected value for next version $nextVersion.");
         }
 
-        return $this->denormalizeVersion($nextVersion, $currentVersion);
+        return $nextVersions[$nextVersion];
     }
 }
