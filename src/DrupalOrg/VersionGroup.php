@@ -22,6 +22,8 @@ use function Safe\preg_replace;
 class VersionGroup
 {
 
+    public const UNKNOWN_VERSION = 'unknown';
+
     /**
      * @param string[] $versions
      */
@@ -77,10 +79,8 @@ class VersionGroup
      *   The given version.
      *
      * @return string
-     *   The closest match to the provided version.
-     *
-     * @throws \RuntimeException
-     *   If a match cannot be determined.
+     *   The closest match to the provided version. If no match could
+     *   be found, it returns the string 'unknown'.
      */
     public function getNextVersion(string $currentVersion): string
     {
@@ -98,7 +98,7 @@ class VersionGroup
         $sortedVersions = Semver::sort(array_keys($nextVersions));
         $nextVersion = current($sortedVersions);
         if (!is_string($nextVersion)) {
-            throw new \RuntimeException("Unexpected value for next version $nextVersion.");
+            return self::UNKNOWN_VERSION;
         }
 
         return $nextVersions[$nextVersion];
