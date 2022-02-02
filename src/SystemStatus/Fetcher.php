@@ -7,6 +7,7 @@ namespace DrupalSecurityJira\SystemStatus;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 use function Safe\json_decode;
+use function Safe\parse_url;
 
 class Fetcher
 {
@@ -21,7 +22,14 @@ class Fetcher
 
     public function fetch(): SiteData
     {
-        $url = "https://{$this->host}/admin/reports/system_status/{$this->token}";
+        $host = $this->host;
+
+        // Add a URL scheme if none is present.
+        if (!is_string(parse_url($host, PHP_URL_SCHEME))) {
+            $host = "https://{$host}";
+        }
+
+        $url = "{$host}/admin/reports/system_status/{$this->token}";
         $response = $this->client->request("GET", $url);
         $data = json_decode($response->getContent());
 

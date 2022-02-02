@@ -36,7 +36,7 @@ class VersionGroupTest extends TestCase
             'Fails when unable to determine version' => [
                 ["1.0.0"],
                 "1.1.0",
-                null,
+                VersionGroup::UNKNOWN_VERSION,
             ],
             'Legacy Drupal versions' => [
                 ["7.x-1.0", "7.x-1.1", "7.x-1.2", "7.x-1.3"],
