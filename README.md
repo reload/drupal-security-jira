@@ -23,12 +23,12 @@ If JIRA ticket for a security update already exists it will not be recreated.
    - `DRUPAL_HOST`: The host name of the Drupal site to check, e.g. `reload.dk`
      (**REQUIRED**)
    - `SYSTEM_STATUS_TOKEN`: The token used to retrieve data exposed by the
-     System Status module. This is the part of the site UUID before the `-` as
-     reported on <https://reload.dk/admin/config/system/system-status>
+     System Status module. This is the part of the site UUID *before* the `-` as
+     reported on <https://example.com/admin/config/system/system-status>
      (**REQUIRED**)
    - `SYSTEM_STATUS_KEY`: The key used to decrypt data exposed by the System
-     Status module (**REQUIRED**). This is the part of the site UUID before the
-     `-` as reported on <https://foo.com/admin/config/system/system-status>
+     Status module (**REQUIRED**). This is the part of the site UUID *after* the
+     `-` as reported on <https://example.com/admin/config/system/system-status>
    - `JIRA_HOST`: The endpoint for your JIRA instance, e.g.
      <https://reload.atlassian.net> (**REQUIRED**)
    - `JIRA_USER`: The ID of the JIRA user which is associated with `JIRA_TOKEN`
