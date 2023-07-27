@@ -6,6 +6,5 @@ namespace DrupalSecurityJira\SystemStatus;
 
 interface Data
 {
-
     public function getData(): object;
 }

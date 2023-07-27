@@ -8,12 +8,11 @@ use function VeeWee\Xml\Encoding\xml_decode;
 
 class ProjectFetcher
 {
-
     /**
-     * @var array[]
+     * @var array<string, mixed>
      *   Project release history cache.
      */
-    protected $cache = [];
+    protected array $cache = [];
 
     public function __construct(
         private HttpClientInterface $client,
@@ -124,7 +123,13 @@ class ProjectFetcher
             "GET",
             "https://updates.drupal.org/release-history/{$project}/all"
         );
-        $data = xml_decode($response->getContent());
+
+        $content = $response->getContent();
+        if (empty($content)) {
+            throw new \RuntimeException('Empty content received from updates.drupal.org');
+        }
+
+        $data = xml_decode($content);
 
         $this->cache[$cacheId] = $data;
         return $data;

@@ -21,7 +21,6 @@ use function Safe\preg_replace;
  */
 class VersionGroup
 {
-
     public const UNKNOWN_VERSION = 'unknown';
 
     /**

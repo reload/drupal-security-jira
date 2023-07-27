@@ -22,17 +22,16 @@ If JIRA ticket for a security update already exists it will not be recreated.
 
    - `DRUPAL_HOST`: The host name of the Drupal site to check, e.g. `reload.dk`
      (**REQUIRED**)
-   - `SYSTEM_STATUS_TOKEN`: The token used to retrieve data exposed by the
-     System Status module. This is the part of the site UUID *before* the `-` as
-     reported on <https://example.com/admin/config/system/system-status>
+   - `URL_TOKEN`: The URL token used to retrieve data exposed by the
+     Project Versions module. See <https://example.com/admin/config/system/project-versions>
      (**REQUIRED**)
-   - `SYSTEM_STATUS_KEY`: The key used to decrypt data exposed by the System
-     Status module (**REQUIRED**). This is the part of the site UUID *after* the
-     `-` as reported on <https://example.com/admin/config/system/system-status>
+   - `ENCRYPTION_KEY`: The key used to decrypt data exposed by the
+     Project Versions module (**REQUIRED**). See
+     <https://example.com/admin/config/system/project-versions>
    - `JIRA_HOST`: The endpoint for your JIRA instance, e.g.
      <https://reload.atlassian.net> (**REQUIRED**)
-   - `JIRA_USER`: The ID of the JIRA user which is associated with `JIRA_TOKEN`
-     e.g. 'someuser@reload.dk' (**REQUIRED**)
+   - `JIRA_USER`: The ID of the JIRA user which is associated with
+     `JIRA_TOKEN` e.g. '<someuser@reload.dk>' (**REQUIRED**)
    - `JIRA_PROJECT`: The project key for the Jira project where issues should be
      created, e.g. `TEST` or `ABC`. (**REQUIRED**)
    - `JIRA_ISSUE_TYPE`: Type of issue to create, e.g. `Security`. Defaults to
@@ -51,7 +50,7 @@ If JIRA ticket for a security update already exists it will not be recreated.
 
 You need the following pieces:
 
-1. A Drupal site with the [System status module](https://www.drupal.org/project/system_status)
+1. A Drupal site with the [Project Versions module](https://www.drupal.org/project/project_versions)
    installed.
 2. Repository secrets containing site token, site key JIRA API token,
    respectively.
@@ -66,10 +65,8 @@ in the repo:
 
 1. `JiraApiToken` containing an [API Token](https://confluence.atlassian.com/cloud/api-tokens-938839638.html)
    for the JIRA user that should be used to create tickets.
-2. `SystemStatusToken` containing the part of the site UUID before the `-` as
-   reported on `/admin/config/system/system-status`
-3. `SystemStatusKey` containing the part of the site UUID after the `-` as
-   reported on `/admin/config/system/system-status`
+2. `PROJECT_VERSIONS_URL_TOKEN` from `/admin/config/system/project-versions`
+3. `PROJECT_VERSIONS_ENCRYPTION_KEY` from `/admin/config/system/project-versions`
 
 ### Workflow file setup
 
@@ -104,8 +101,8 @@ jobs:
         uses: reload/drupal-security-jira@main
         env:
           DRUPAL_HOST: example.com
-          SYSTEM_STATUS_TOKEN: ${{ secrets.SystemStatusToken }}
-          SYSTEM_STATUS_KEY: ${{ secrets.SystemStatusKey }}
+          URL_TOKEN: ${{ secrets.PROJECT_VERSIONS_URL_TOKEN }}
+          ENCRYPTION_KEY: ${{ secrets.PROJECT_VERSIONS_ENCRYPTION_KEY }}
           JIRA_TOKEN: ${{ secrets.JiraApiToken }}
           JIRA_HOST: https://reload.atlassian.net
           JIRA_USER: someone@reload.dk

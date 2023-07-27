@@ -6,7 +6,6 @@ namespace DrupalSecurityJira\SystemStatus;
 
 class SiteData
 {
-
     public function __construct(
         private Data $data
     ) {

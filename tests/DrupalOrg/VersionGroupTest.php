@@ -8,7 +8,7 @@ class VersionGroupTest extends TestCase
 {
 
     /**
-     * @return array[]
+     * @return array<string, mixed>
      */
     public function versionGroups(): array
     {

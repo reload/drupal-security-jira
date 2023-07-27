@@ -11,12 +11,11 @@ use function Safe\parse_url;
 
 class Fetcher
 {
-
     public function __construct(
         public HttpClientInterface $client,
         public string $host,
         public string $token,
-        public ?string $key,
+        public string $key,
     ) {
     }
 
