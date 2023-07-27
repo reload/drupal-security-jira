@@ -23,12 +23,12 @@ class SyncCommand extends Command
         // getenv() which is used by reload/jira-security-issue.
         $env = Dotenv::createUnsafeImmutable(__DIR__ . '/../');
         $env->safeLoad();
-        $env->required(['DRUPAL_HOST', 'SYSTEM_STATUS_TOKEN', 'SYSTEM_STATUS_KEY'])->notEmpty();
+        $env->required(['DRUPAL_HOST', 'URL_TOKEN', 'ENCRYPTION_KEY'])->notEmpty();
         $env->ifPresent('DRY_RUN')->isBoolean();
 
         $host = getenv('DRUPAL_HOST', true) ?: '';
-        $token = getenv('SYSTEM_STATUS_TOKEN', true) ?: '';
-        $key = getenv('SYSTEM_STATUS_KEY', true) ?: '';
+        $token = getenv('URL_TOKEN', true) ?: '';
+        $key = getenv('ENCRYPTION_KEY', true) ?: '';
         $dry_run = (bool) getenv('DRY_RUN', true);
 
         $logger = new ConsoleLogger($output);
