@@ -16,7 +16,6 @@ use Symfony\Component\HttpClient\HttpClient;
 
 class SyncCommand extends Command
 {
-
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         // Use create*Unsafe*Immutable() since it is required to support

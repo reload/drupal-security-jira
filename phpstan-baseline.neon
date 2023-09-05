@@ -1,0 +1,96 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot access offset 'release' on mixed\\.$#"
+			count: 2
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Cannot access offset 'releases' on mixed\\.$#"
+			count: 2
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function array_map expects \\(callable\\(mixed\\)\\: mixed\\)\\|null, Closure\\(array\\)\\: string given\\.$#"
+			count: 2
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$element of method DrupalSecurityJira\\\\DrupalOrg\\\\ProjectFetcher\\:\\:xmlDataToArray\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$haystack of function str_contains expects string, mixed given\\.$#"
+			count: 1
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$message of class RuntimeException constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$xml of function VeeWee\\\\Xml\\\\Encoding\\\\xml_decode expects non\\-empty\\-string, string given\\.$#"
+			count: 1
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Parameter \\#2 \\$callback of function array_filter expects callable\\(mixed\\)\\: mixed, Closure\\(array\\)\\: bool given\\.$#"
+			count: 1
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Parameter \\#2 \\$callback of function array_reduce expects callable\\(bool, mixed\\)\\: bool, Closure\\(mixed, array\\)\\: bool given\\.$#"
+			count: 1
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Property DrupalSecurityJira\\\\DrupalOrg\\\\ProjectFetcher\\:\\:\\$cache type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/DrupalOrg/ProjectFetcher.php
+
+		-
+			message: "#^Cannot access property \\$drupal_version on mixed\\.$#"
+			count: 1
+			path: src/SystemStatus/Fetcher.php
+
+		-
+			message: "#^Cannot access property \\$system_status on mixed\\.$#"
+			count: 3
+			path: src/SystemStatus/Fetcher.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of class DrupalSecurityJira\\\\SystemStatus\\\\UnencryptedData constructor expects object, mixed given\\.$#"
+			count: 1
+			path: src/SystemStatus/Fetcher.php
+
+		-
+			message: "#^Constant MCRYPT_MODE_CBC not found\\.$#"
+			count: 1
+			path: src/SystemStatus/McryptEncryptedData.php
+
+		-
+			message: "#^Constant MCRYPT_RIJNDAEL_128 not found\\.$#"
+			count: 1
+			path: src/SystemStatus/McryptEncryptedData.php
+
+		-
+			message: "#^Function mcrypt_decrypt not found\\.$#"
+			count: 1
+			path: src/SystemStatus/McryptEncryptedData.php
+
+		-
+			message: "#^Method DrupalSecurityJira\\\\SystemStatus\\\\McryptEncryptedData\\:\\:getData\\(\\) should return object but returns mixed\\.$#"
+			count: 1
+			path: src/SystemStatus/McryptEncryptedData.php
+
+		-
+			message: "#^Method DrupalSecurityJira\\\\SystemStatus\\\\OpenSSLEncryptedData\\:\\:getData\\(\\) should return object but returns mixed\\.$#"
+			count: 1
+			path: src/SystemStatus/OpenSSLEncryptedData.php
+
+		-
+			message: "#^Method DrupalSecurityJira\\\\DrupalOrg\\\\VersionGroupTest\\:\\:versionGroups\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/DrupalOrg/VersionGroupTest.php

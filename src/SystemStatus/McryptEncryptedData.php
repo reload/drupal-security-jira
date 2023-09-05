@@ -9,7 +9,6 @@ use function Safe\substr;
 
 class McryptEncryptedData implements Data
 {
-
     public function __construct(
         private object $data,
         private string $key

@@ -8,7 +8,6 @@ use function VeeWee\Xml\Encoding\xml_decode;
 
 class ProjectFetcher
 {
-
     /**
      * @var array[]
      *   Project release history cache.
