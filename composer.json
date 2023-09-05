@@ -9,7 +9,8 @@
         "veewee/xml": "^2.7",
         "reload/jira-security-issue": "^1.0",
         "composer/semver": "^3.3",
-        "thecodingmachine/safe": "^2.5"
+        "thecodingmachine/safe": "^2.5",
+        "vlucas/phpdotenv": "^5.5"
     },
     "license": "MIT",
     "autoload": {
