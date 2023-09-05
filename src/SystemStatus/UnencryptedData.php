@@ -6,7 +6,6 @@ namespace DrupalSecurityJira\SystemStatus;
 
 class UnencryptedData implements Data
 {
-
     public function __construct(
         private object $data
     ) {

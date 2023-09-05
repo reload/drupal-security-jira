@@ -11,7 +11,6 @@ use function Safe\parse_url;
 
 class Fetcher
 {
-
     public function __construct(
         public HttpClientInterface $client,
         public string $host,
