@@ -98,7 +98,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Sync JIRA security issues from Drupal security updates"
-        uses: reload/drupal-security-jira@main
+        uses: reload/drupal-security-jira@v2
         env:
           DRUPAL_HOST: example.com
           URL_TOKEN: ${{ secrets.PROJECT_VERSIONS_URL_TOKEN }}
@@ -111,3 +111,10 @@ jobs:
           JIRA_WATCHERS: customer@example.com,boss@example.com
           DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
 ```
+
+## Legacy version
+
+The legacy version that works with the [System Status
+module](https://www.drupal.org/project/system_status) can be found on
+the [main
+branch](https://github.com/reload/drupal-security-jira/tree/main).
