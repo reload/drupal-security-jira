@@ -1,6 +1,7 @@
 version: 2
 updates:
 - package-ecosystem: github-actions
+  target-branch: v2
   directory: "/"
   schedule:
     interval: daily
@@ -10,6 +11,7 @@ updates:
   reviewers:
   - "reload/developers"
 - package-ecosystem: composer
+  target-branch: v2
   directory: "/"
   schedule:
     interval: daily
@@ -19,6 +21,37 @@ updates:
   reviewers:
   - "reload/developers"
 - package-ecosystem: docker
+  target-branch: v2
+  directory: "/"
+  schedule:
+    interval: daily
+    time: '04:00'
+    timezone: Europe/Copenhagen
+  reviewers:
+  - "reload/developers"
+
+- package-ecosystem: github-actions
+  target-branch: main
+  directory: "/"
+  schedule:
+    interval: daily
+    time: '04:00'
+    timezone: Europe/Copenhagen
+  open-pull-requests-limit: 10
+  reviewers:
+  - "reload/developers"
+- package-ecosystem: composer
+  target-branch: main
+  directory: "/"
+  schedule:
+    interval: daily
+    time: '04:00'
+    timezone: Europe/Copenhagen
+  open-pull-requests-limit: 10
+  reviewers:
+  - "reload/developers"
+- package-ecosystem: docker
+  target-branch: main
   directory: "/"
   schedule:
     interval: daily
