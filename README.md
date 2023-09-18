@@ -1,4 +1,4 @@
-# github-security-jira
+# drupal-security-jira
 
 Create JIRA tickets for security updates for projects used on a Drupal site.
 
