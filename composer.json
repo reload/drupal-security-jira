@@ -6,11 +6,12 @@
         "symfony/console": "^5.3",
         "symfony/http-client": "^6.3",
         "ext-openssl": "*",
-        "veewee/xml": "^2.7",
+        "veewee/xml": "^2.12",
         "reload/jira-security-issue": "^1.0",
         "composer/semver": "^3.3",
         "thecodingmachine/safe": "^2.5",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "azjezz/psl": "^2.8"
     },
     "license": "MIT",
     "autoload": {
