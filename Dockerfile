@@ -13,7 +13,7 @@ WORKDIR /opt/drupal-security-jira
 
 RUN composer install --prefer-dist --no-dev
 
-FROM php:8.3.0-alpine3.18@sha256:11fa3da3f5ed6fdafc0df2aec38bbbbcf2be943da44d3d9f2235b0e273d2c4d6
+FROM php:8.3.0-alpine3.18@sha256:72ce7e0cf01d9325c30f1d5c4a588fa794c2e1620dd7c087f5a682cc9c27ff39
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 # hadolint ignore=SC2086
