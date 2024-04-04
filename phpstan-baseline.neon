@@ -2,12 +2,12 @@ parameters:
 	ignoreErrors:
 		-
 			message: "#^Cannot access offset 'release' on mixed\\.$#"
-			count: 2
+			count: 1
 			path: src/DrupalOrg/ProjectFetcher.php
 
 		-
 			message: "#^Cannot access offset 'releases' on mixed\\.$#"
-			count: 2
+			count: 1
 			path: src/DrupalOrg/ProjectFetcher.php
 
 		-
@@ -32,11 +32,6 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$xml of function VeeWee\\\\Xml\\\\Encoding\\\\xml_decode expects non\\-empty\\-string, string given\\.$#"
-			count: 1
-			path: src/DrupalOrg/ProjectFetcher.php
-
-		-
-			message: "#^Parameter \\#2 \\$callback of function array_filter expects callable\\(mixed\\)\\: mixed, Closure\\(array\\)\\: bool given\\.$#"
 			count: 1
 			path: src/DrupalOrg/ProjectFetcher.php
 

@@ -71,7 +71,8 @@ class ProjectFetcher
 
         $secureReleases = array_filter(
             $releases,
-            function (array $release): bool {
+            function ($release): bool {
+                /** @var array<array<array<mixed>>> $release */
                 $terms = isset($release['terms']['term']) ? $this->xmlDataToArray($release['terms']['term']) : [];
                 return array_reduce(
                     $terms,
