@@ -1,3 +1,13 @@
+> [!Note]
+> The `v2` version of this action is designed to work with the
+> [Project Versions](https://www.drupal.org/project/project_versions)
+> Drupal module.
+> 
+> The legacy version that works with the [System Status
+> module](https://www.drupal.org/project/system_status) can be found
+> on the [main
+> branch](https://github.com/reload/drupal-security-jira/tree/main).
+
 # drupal-security-jira
 
 Create JIRA tickets for security updates for projects used on a Drupal site.
@@ -111,10 +121,3 @@ jobs:
           JIRA_WATCHERS: customer@example.com,boss@example.com
           DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
 ```
-
-## Legacy version
-
-The legacy version that works with the [System Status
-module](https://www.drupal.org/project/system_status) can be found on
-the [main
-branch](https://github.com/reload/drupal-security-jira/tree/main).
