@@ -2,15 +2,26 @@ on: pull_request
 name: Check and lint
 
 jobs:
+  php_version:
+    name: Lookup PHP version
+    runs-on: ubuntu-latest
+    outputs:
+      php_version: ${{ env.php_version }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lookup PHP version
+        run: echo "php_versions=$(jq -r .config.platform.php)" >> "$GITHUB_ENV"
+
   review_codestyle:
     name: Codestyle
     runs-on: ubuntu-latest
+    needs: php_version
     steps:
       - uses: actions/checkout@v4
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@master
         with:
-          php-version: 8.2
+          php-version: ${{ needs.php_version.outputs.php_version }}
           coverage: none
       - name: Install Dependencies
         run: composer install --no-interaction --no-progress
@@ -22,16 +33,17 @@ jobs:
   static_code_analysis:
     name: Static Code Analysis
     runs-on: ubuntu-latest
+    needs: php_version
     steps:
       - uses: actions/checkout@v4
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@master
         with:
-          php-version: 8.2
+          php-version: ${{ needs.php_version.outputs.php_version }}
           coverage: none
       - name: Install Reviewdog
         run: |
-          wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b $PWD/ latest
+          wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b "$PWD/" latest
       - name: Install Dependencies
         run: |
           composer install --no-interaction --no-progress
@@ -44,12 +56,13 @@ jobs:
   unit_tests:
     name: PHPUnit tests
     runs-on: ubuntu-latest
+    needs: php_version
     steps:
       - uses: actions/checkout@v4
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@master
         with:
-          php-version: 8.2
+          php-version: ${{ needs.php_version.outputs.php_version }}
           coverage: none
       - name: Install Dependencies
         run: |
