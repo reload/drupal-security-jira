@@ -10,7 +10,7 @@ class VersionGroupTest extends TestCase
     /**
      * @return array[]
      */
-    public function versionGroups(): array
+    public static function versionGroups(): array
     {
         return [
             'Semver versions including given version' => [
