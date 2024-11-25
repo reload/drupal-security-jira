@@ -4,7 +4,7 @@
     "type": "project",
     "require": {
         "symfony/console": "^5.3",
-        "symfony/http-client": "^5.3",
+        "symfony/http-client": "^7.1",
         "ext-openssl": "*",
         "veewee/xml": "^4",
         "reload/jira-security-issue": "^2",
