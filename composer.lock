@@ -46,8 +46,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "hhvm/hsl",
-                    "url": "https://github.com/hhvm/hsl"
+                    "url": "https://github.com/hhvm/hsl",
+                    "name": "hhvm/hsl"
                 }
             },
             "autoload": {
@@ -1865,16 +1865,16 @@
         },
         {
             "name": "veewee/xml",
-            "version": "4.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/veewee/xml.git",
-                "reference": "9a1e9c96a50d2e78acb00e3176834bedc436a19e"
+                "reference": "86a8497dbc9fc31cbfb7b12c9f0afc46929d7697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/veewee/xml/zipball/9a1e9c96a50d2e78acb00e3176834bedc436a19e",
-                "reference": "9a1e9c96a50d2e78acb00e3176834bedc436a19e",
+                "url": "https://api.github.com/repos/veewee/xml/zipball/86a8497dbc9fc31cbfb7b12c9f0afc46929d7697",
+                "reference": "86a8497dbc9fc31cbfb7b12c9f0afc46929d7697",
                 "shasum": ""
             },
             "require": {
@@ -1930,7 +1930,7 @@
             ],
             "support": {
                 "issues": "https://github.com/veewee/xml/issues",
-                "source": "https://github.com/veewee/xml/tree/4.0.0"
+                "source": "https://github.com/veewee/xml/tree/4.1.0"
             },
             "funding": [
                 {
@@ -1938,7 +1938,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-20T17:28:36+00:00"
+            "time": "2024-12-08T11:23:01+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
