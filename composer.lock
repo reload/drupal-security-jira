@@ -1105,8 +1105,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -1863,16 +1863,16 @@
         },
         {
             "name": "veewee/xml",
-            "version": "4.1.0",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/veewee/xml.git",
-                "reference": "86a8497dbc9fc31cbfb7b12c9f0afc46929d7697"
+                "reference": "a732fcd93b221b0c8c647f9a07fced54bafa8624"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/veewee/xml/zipball/86a8497dbc9fc31cbfb7b12c9f0afc46929d7697",
-                "reference": "86a8497dbc9fc31cbfb7b12c9f0afc46929d7697",
+                "url": "https://api.github.com/repos/veewee/xml/zipball/a732fcd93b221b0c8c647f9a07fced54bafa8624",
+                "reference": "a732fcd93b221b0c8c647f9a07fced54bafa8624",
                 "shasum": ""
             },
             "require": {
@@ -1928,7 +1928,7 @@
             ],
             "support": {
                 "issues": "https://github.com/veewee/xml/issues",
-                "source": "https://github.com/veewee/xml/tree/4.1.0"
+                "source": "https://github.com/veewee/xml/tree/4.2.0"
             },
             "funding": [
                 {
@@ -1936,7 +1936,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-08T11:23:01+00:00"
+            "time": "2025-01-26T15:10:56+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
