@@ -2,6 +2,7 @@
 
 namespace DrupalSecurityJira\DrupalOrg;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class VersionGroupTest extends TestCase
@@ -57,12 +58,11 @@ class VersionGroupTest extends TestCase
     }
 
     /**
-     * @dataProvider versionGroups
-     *
      * @param string[] $versions
      * @param string|null $nextVersion
      *   The expected next version (if any)
      */
+    #[DataProvider('versionGroups')]
     public function testGetNextVersion(
         array $versions,
         string $currentVersion,
