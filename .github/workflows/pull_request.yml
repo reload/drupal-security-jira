@@ -86,7 +86,7 @@ jobs:
       - name: Install problem matcher
         uses: xt0rted/markdownlint-problem-matcher@v3
       - name: Lint README.md file
-        uses: nosborn/github-action-markdown-cli@v3.3.0
+        uses: nosborn/github-action-markdown-cli@v3.4.0
         with:
           files: './README.md'
 
