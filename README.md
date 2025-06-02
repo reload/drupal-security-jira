@@ -32,7 +32,7 @@ If JIRA ticket for a security update already exists it will not be recreated.
    - `JIRA_HOST`: The endpoint for your JIRA instance, e.g.
      <https://reload.atlassian.net> (**REQUIRED**)
    - `JIRA_USER`: The ID of the JIRA user which is associated with `JIRA_TOKEN`
-     e.g. 'someuser@reload.dk' (**REQUIRED**)
+     e.g. '<someuser@reload.dk>' (**REQUIRED**)
    - `JIRA_PROJECT`: The project key for the Jira project where issues should be
      created, e.g. `TEST` or `ABC`. (**REQUIRED**)
    - `JIRA_ISSUE_TYPE`: Type of issue to create, e.g. `Security`. Defaults to
