@@ -1,5 +1,7 @@
 on: pull_request
 name: Check and lint
+permissions:
+  contents: read
 
 jobs:
   php_version:
