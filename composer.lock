@@ -620,16 +620,16 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v2.0.7",
+            "version": "v2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "2ad98eb37e97eb56a0c66af9eb349f6c0df49dbc"
+                "reference": "532ae7700ad94d2a1f0e0987d74b40392d051191"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/2ad98eb37e97eb56a0c66af9eb349f6c0df49dbc",
-                "reference": "2ad98eb37e97eb56a0c66af9eb349f6c0df49dbc",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/532ae7700ad94d2a1f0e0987d74b40392d051191",
+                "reference": "532ae7700ad94d2a1f0e0987d74b40392d051191",
                 "shasum": ""
             },
             "require": {
@@ -661,9 +661,9 @@
             "description": "Create Jira issues if it doesn't exist",
             "support": {
                 "issues": "https://github.com/reload/jira-security-issue/issues",
-                "source": "https://github.com/reload/jira-security-issue/tree/v2.0.7"
+                "source": "https://github.com/reload/jira-security-issue/tree/v2.0.8"
             },
-            "time": "2025-08-23T21:05:26+00:00"
+            "time": "2025-08-25T04:07:02+00:00"
         },
         {
             "name": "revolt/event-loop",
