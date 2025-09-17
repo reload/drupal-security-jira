@@ -1,3 +1,4 @@
+---
 on: pull_request
 name: Check and lint
 permissions:
@@ -6,7 +7,7 @@ permissions:
 jobs:
   php_version:
     name: Lookup PHP version
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       php_version: ${{ env.php_version }}
     steps:
@@ -16,7 +17,7 @@ jobs:
 
   review_codestyle:
     name: Codestyle
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: php_version
     steps:
       - uses: actions/checkout@v5
@@ -34,7 +35,7 @@ jobs:
 
   static_code_analysis:
     name: Static Code Analysis
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: php_version
     steps:
       - uses: actions/checkout@v5
@@ -57,7 +58,7 @@ jobs:
 
   unit_tests:
     name: PHPUnit tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: php_version
     steps:
       - uses: actions/checkout@v5
@@ -75,14 +76,14 @@ jobs:
 
   hadolint:
     name: Hadolint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - uses: hadolint/hadolint-action@v3.2.0
 
   markdown_lint:
     name: Markdown lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - name: Install problem matcher
@@ -94,7 +95,7 @@ jobs:
 
   docker_build:
     name: Test Docker build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - name: Build docker image
