@@ -1,8 +1,9 @@
+---
 grumphp:
-    ascii:
-        failed: ~
-        succeeded: ~
-    tasks:
-        phpstan: []
-        phpcs: []
-        phpunit: []
+  ascii:
+    failed: ~
+    succeeded: ~
+  tasks:
+    phpstan: []
+    phpcs: []
+    phpunit: []

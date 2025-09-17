@@ -1,3 +1,4 @@
+---
 name: 'Sync Drupal security updates with JIRA'
 description: 'Check a Drupal site corresponding to the current repository for security updates and creates JIRA tickets accordingly.'
 author: 'reload'
