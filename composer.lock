@@ -1972,34 +1972,37 @@
         },
         {
             "name": "veewee/xml",
-            "version": "4.2.0",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/veewee/xml.git",
-                "reference": "a732fcd93b221b0c8c647f9a07fced54bafa8624"
+                "reference": "0a3d5ae6cefe3379833536d6bc9062b0a95b60be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/veewee/xml/zipball/a732fcd93b221b0c8c647f9a07fced54bafa8624",
-                "reference": "a732fcd93b221b0c8c647f9a07fced54bafa8624",
+                "url": "https://api.github.com/repos/veewee/xml/zipball/0a3d5ae6cefe3379833536d6bc9062b0a95b60be",
+                "reference": "0a3d5ae6cefe3379833536d6bc9062b0a95b60be",
                 "shasum": ""
             },
             "require": {
-                "azjezz/psl": "^3.0",
+                "azjezz/psl": "^3.0 || ~4.0",
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "ext-xml": "*",
                 "ext-xmlreader": "*",
                 "ext-xmlwriter": "*",
                 "ext-xsl": "*",
-                "php": "~8.4.0",
+                "php": "~8.4.0 || ~8.5.0",
                 "webmozart/assert": "^1.10"
             },
             "require-dev": {
+                "infection/infection": "^0.31",
+                "php-cs-fixer/shim": "~3.88",
                 "php-standard-library/psalm-plugin": "^2.2",
+                "phpunit/phpunit": "~12.3",
                 "symfony/finder": "^7.1",
                 "veewee/composer-run-parallel": "^1.0.0",
-                "vimeo/psalm": "^5.4"
+                "vimeo/psalm": "~6.13"
             },
             "type": "library",
             "autoload": {
@@ -2037,7 +2040,7 @@
             ],
             "support": {
                 "issues": "https://github.com/veewee/xml/issues",
-                "source": "https://github.com/veewee/xml/tree/4.2.0"
+                "source": "https://github.com/veewee/xml/tree/4.3.0"
             },
             "funding": [
                 {
@@ -2045,7 +2048,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-01-26T15:10:56+00:00"
+            "time": "2025-10-24T12:53:13+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2192,28 +2195,28 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991"
+                "reference": "541057574806f942c94662b817a50f63f7345360"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/11cb2199493b2f8a3b53e7f19068fc6aac760991",
-                "reference": "11cb2199493b2f8a3b53e7f19068fc6aac760991",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/541057574806f942c94662b817a50f63f7345360",
+                "reference": "541057574806f942c94662b817a50f63f7345360",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
+                "ext-date": "*",
+                "ext-filter": "*",
                 "php": "^7.2 || ^8.0"
             },
-            "conflict": {
-                "phpstan/phpstan": "<0.12.20",
-                "vimeo/psalm": "<4.6.1 || 4.6.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5.13"
+            "suggest": {
+                "ext-intl": "",
+                "ext-simplexml": "",
+                "ext-spl": ""
             },
             "type": "library",
             "extra": {
@@ -2244,9 +2247,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/1.11.0"
+                "source": "https://github.com/webmozarts/assert/tree/1.12.0"
             },
-            "time": "2022-06-03T18:03:27+00:00"
+            "time": "2025-10-20T12:43:39+00:00"
         }
     ],
     "packages-dev": [
