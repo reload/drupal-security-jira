@@ -11,7 +11,7 @@
         "composer/semver": "^3.2",
         "vlucas/phpdotenv": "^5.5",
         "thecodingmachine/safe": "^2.5",
-        "azjezz/psl": "^3.1"
+        "azjezz/psl": "^4.1"
     },
     "license": "MIT",
     "autoload": {
