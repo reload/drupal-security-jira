@@ -11,7 +11,7 @@ jobs:
     outputs:
       php_version: ${{ env.php_version }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Lookup PHP version
         run: echo "php_versions=$(jq -r .config.platform.php)" >> "$GITHUB_ENV"
 
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-24.04
     needs: php_version
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@master
         with:
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-24.04
     needs: php_version
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@master
         with:
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-24.04
     needs: php_version
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@master
         with:
@@ -78,14 +78,14 @@ jobs:
     name: Hadolint
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: hadolint/hadolint-action@v3.3.0
 
   markdown_lint:
     name: Markdown lint
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Install problem matcher
         uses: xt0rted/markdownlint-problem-matcher@v3
       - name: Lint README.md file
@@ -97,7 +97,7 @@ jobs:
     name: Test Docker build
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Build docker image
         run: docker build -t reload/drupal-security-jira:test .
       - name: Test image
