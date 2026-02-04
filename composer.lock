@@ -2412,16 +2412,16 @@
         },
         {
             "name": "phpro/grumphp-shim",
-            "version": "v2.18.0",
+            "version": "v2.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpro/grumphp-shim.git",
-                "reference": "6a46a594ec3a9e46c0b586d414c32d6b01ea923c"
+                "reference": "4d08e4ef6a6b6d6ba641bce52faabaa9f200201c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpro/grumphp-shim/zipball/6a46a594ec3a9e46c0b586d414c32d6b01ea923c",
-                "reference": "6a46a594ec3a9e46c0b586d414c32d6b01ea923c",
+                "url": "https://api.github.com/repos/phpro/grumphp-shim/zipball/4d08e4ef6a6b6d6ba641bce52faabaa9f200201c",
+                "reference": "4d08e4ef6a6b6d6ba641bce52faabaa9f200201c",
                 "shasum": ""
             },
             "require": {
@@ -2465,9 +2465,9 @@
             "description": "GrumPHP Phar distribution",
             "support": {
                 "issues": "https://github.com/phpro/grumphp-shim/issues",
-                "source": "https://github.com/phpro/grumphp-shim/tree/v2.18.0"
+                "source": "https://github.com/phpro/grumphp-shim/tree/v2.19.0"
             },
-            "time": "2025-12-05T09:34:51+00:00"
+            "time": "2026-02-03T06:29:24+00:00"
         },
         {
             "name": "phpstan/extension-installer",
