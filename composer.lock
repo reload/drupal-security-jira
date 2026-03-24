@@ -4,85 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26d45e27a9c866a0f9e5ffc5bd53b92e",
+    "content-hash": "8d08faeb187a6208f7b4aa256448e6fa",
     "packages": [
-        {
-            "name": "azjezz/psl",
-            "version": "5.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/azjezz/psl.git",
-                "reference": "8534d06d442b602970ee66ebc1d79c92361a4ba7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/azjezz/psl/zipball/8534d06d442b602970ee66ebc1d79c92361a4ba7",
-                "reference": "8534d06d442b602970ee66ebc1d79c92361a4ba7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-bcmath": "*",
-                "ext-intl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-openssl": "*",
-                "ext-sodium": "*",
-                "php": "~8.4.0 || ~8.5.0",
-                "revolt/event-loop": "^1.0.8"
-            },
-            "require-dev": {
-                "carthage-software/mago": "^1.14.0",
-                "infection/infection": "^0.32.6",
-                "php-coveralls/php-coveralls": "^2.9.1",
-                "phpbench/phpbench": "^1.5.1",
-                "phpunit/phpunit": "^13.0.5"
-            },
-            "suggest": {
-                "php-standard-library/phpstan-extension": "PHPStan integration",
-                "php-standard-library/psalm-plugin": "Psalm integration"
-            },
-            "type": "library",
-            "extra": {
-                "thanks": {
-                    "url": "https://github.com/hhvm/hsl",
-                    "name": "hhvm/hsl"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/bootstrap.php"
-                ],
-                "psr-4": {
-                    "Psl\\": "src/Psl"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "azjezz",
-                    "email": "azjezz@protonmail.com"
-                }
-            ],
-            "description": "PHP Standard Library",
-            "support": {
-                "issues": "https://github.com/azjezz/psl/issues",
-                "source": "https://github.com/azjezz/psl/tree/5.5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/azjezz",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/veewee",
-                    "type": "github"
-                }
-            ],
-            "time": "2026-03-12T20:19:39+00:00"
-        },
         {
             "name": "composer/semver",
             "version": "3.4.4",
@@ -440,6 +363,83 @@
                 "source": "https://github.com/cweiske/jsonmapper/tree/v5.0.0"
             },
             "time": "2024-09-08T10:20:00+00:00"
+        },
+        {
+            "name": "php-standard-library/php-standard-library",
+            "version": "5.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-standard-library/php-standard-library.git",
+                "reference": "8534d06d442b602970ee66ebc1d79c92361a4ba7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-standard-library/php-standard-library/zipball/8534d06d442b602970ee66ebc1d79c92361a4ba7",
+                "reference": "8534d06d442b602970ee66ebc1d79c92361a4ba7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "ext-intl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "ext-sodium": "*",
+                "php": "~8.4.0 || ~8.5.0",
+                "revolt/event-loop": "^1.0.8"
+            },
+            "require-dev": {
+                "carthage-software/mago": "^1.14.0",
+                "infection/infection": "^0.32.6",
+                "php-coveralls/php-coveralls": "^2.9.1",
+                "phpbench/phpbench": "^1.5.1",
+                "phpunit/phpunit": "^13.0.5"
+            },
+            "suggest": {
+                "php-standard-library/phpstan-extension": "PHPStan integration",
+                "php-standard-library/psalm-plugin": "Psalm integration"
+            },
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/hhvm/hsl",
+                    "name": "hhvm/hsl"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/bootstrap.php"
+                ],
+                "psr-4": {
+                    "Psl\\": "src/Psl"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "azjezz",
+                    "email": "azjezz@protonmail.com"
+                }
+            ],
+            "description": "PHP Standard Library",
+            "support": {
+                "issues": "https://github.com/php-standard-library/php-standard-library/issues",
+                "source": "https://github.com/php-standard-library/php-standard-library/tree/5.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/azjezz",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/veewee",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-03-12T20:19:39+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -1894,20 +1894,19 @@
         },
         {
             "name": "veewee/xml",
-            "version": "4.5.0",
+            "version": "4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/veewee/xml.git",
-                "reference": "4dc45b582c4fdbdf71193c9d1a26aa561940d9e5"
+                "reference": "3fbcd729e0caf921c67c4bce46e542060e6a7afe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/veewee/xml/zipball/4dc45b582c4fdbdf71193c9d1a26aa561940d9e5",
-                "reference": "4dc45b582c4fdbdf71193c9d1a26aa561940d9e5",
+                "url": "https://api.github.com/repos/veewee/xml/zipball/3fbcd729e0caf921c67c4bce46e542060e6a7afe",
+                "reference": "3fbcd729e0caf921c67c4bce46e542060e6a7afe",
                 "shasum": ""
             },
             "require": {
-                "azjezz/psl": "^3.0 || ~4.0 || ^5.0",
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "ext-xml": "*",
@@ -1915,6 +1914,7 @@
                 "ext-xmlwriter": "*",
                 "ext-xsl": "*",
                 "php": "~8.4.0 || ~8.5.0",
+                "php-standard-library/php-standard-library": "^3.0 || ~4.0 || ^5.0 || ^6.0",
                 "webmozart/assert": "^1.10 || ~2.0"
             },
             "require-dev": {
@@ -1962,7 +1962,7 @@
             ],
             "support": {
                 "issues": "https://github.com/veewee/xml/issues",
-                "source": "https://github.com/veewee/xml/tree/4.5.0"
+                "source": "https://github.com/veewee/xml/tree/4.6.0"
             },
             "funding": [
                 {
@@ -1970,7 +1970,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-11T13:14:53+00:00"
+            "time": "2026-03-19T06:47:30+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
