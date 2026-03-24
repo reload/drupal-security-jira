@@ -10,8 +10,7 @@
         "reload/jira-security-issue": "^2.0.10",
         "composer/semver": "^3.3",
         "thecodingmachine/safe": "^2.5",
-        "vlucas/phpdotenv": "^5.5",
-        "azjezz/psl": "^5.5"
+        "vlucas/phpdotenv": "^5.5"
     },
     "license": "MIT",
     "autoload": {

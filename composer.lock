@@ -4,85 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5abc0552a0a7b9d53492ed98bdf0d053",
+    "content-hash": "bfbba136c27a0773b045fee4b87ec59e",
     "packages": [
-        {
-            "name": "azjezz/psl",
-            "version": "5.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/azjezz/psl.git",
-                "reference": "8534d06d442b602970ee66ebc1d79c92361a4ba7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/azjezz/psl/zipball/8534d06d442b602970ee66ebc1d79c92361a4ba7",
-                "reference": "8534d06d442b602970ee66ebc1d79c92361a4ba7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-bcmath": "*",
-                "ext-intl": "*",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "ext-openssl": "*",
-                "ext-sodium": "*",
-                "php": "~8.4.0 || ~8.5.0",
-                "revolt/event-loop": "^1.0.8"
-            },
-            "require-dev": {
-                "carthage-software/mago": "^1.14.0",
-                "infection/infection": "^0.32.6",
-                "php-coveralls/php-coveralls": "^2.9.1",
-                "phpbench/phpbench": "^1.5.1",
-                "phpunit/phpunit": "^13.0.5"
-            },
-            "suggest": {
-                "php-standard-library/phpstan-extension": "PHPStan integration",
-                "php-standard-library/psalm-plugin": "Psalm integration"
-            },
-            "type": "library",
-            "extra": {
-                "thanks": {
-                    "url": "https://github.com/hhvm/hsl",
-                    "name": "hhvm/hsl"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/bootstrap.php"
-                ],
-                "psr-4": {
-                    "Psl\\": "src/Psl"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "azjezz",
-                    "email": "azjezz@protonmail.com"
-                }
-            ],
-            "description": "PHP Standard Library",
-            "support": {
-                "issues": "https://github.com/azjezz/psl/issues",
-                "source": "https://github.com/azjezz/psl/tree/5.5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/azjezz",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/veewee",
-                    "type": "github"
-                }
-            ],
-            "time": "2026-03-12T20:19:39+00:00"
-        },
         {
             "name": "composer/semver",
             "version": "3.4.4",
