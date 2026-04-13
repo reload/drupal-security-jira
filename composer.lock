@@ -1238,7 +1238,7 @@
         },
         {
             "name": "php-standard-library/locale",
-            "version": "6.1.1",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-standard-library/locale.git",
@@ -1294,7 +1294,7 @@
                 "locale"
             ],
             "support": {
-                "source": "https://github.com/php-standard-library/locale/tree/6.1.1"
+                "source": "https://github.com/php-standard-library/locale/tree/6.1.0"
             },
             "time": "2026-03-19T16:33:51+00:00"
         },
@@ -2536,16 +2536,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.33.0",
+            "version": "v1.34.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "a3cc8b044a6ea513310cbd48ef7333b384945638"
+                "reference": "141046a8f9477948ff284fa65be2095baafb94f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/a3cc8b044a6ea513310cbd48ef7333b384945638",
-                "reference": "a3cc8b044a6ea513310cbd48ef7333b384945638",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/141046a8f9477948ff284fa65be2095baafb94f2",
+                "reference": "141046a8f9477948ff284fa65be2095baafb94f2",
                 "shasum": ""
             },
             "require": {
@@ -2595,7 +2595,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.33.0"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.34.0"
             },
             "funding": [
                 {
@@ -2615,7 +2615,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-09T11:45:10+00:00"
+            "time": "2026-04-10T16:19:22+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
@@ -3350,16 +3350,16 @@
         },
         {
             "name": "veewee/xml",
-            "version": "4.10.0",
+            "version": "4.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/veewee/xml.git",
-                "reference": "9a7745159989d45e1a179b70bd0c6aca44bc00dd"
+                "reference": "27fe9fd23dc64bad4775824dcaf61e398007450d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/veewee/xml/zipball/9a7745159989d45e1a179b70bd0c6aca44bc00dd",
-                "reference": "9a7745159989d45e1a179b70bd0c6aca44bc00dd",
+                "url": "https://api.github.com/repos/veewee/xml/zipball/27fe9fd23dc64bad4775824dcaf61e398007450d",
+                "reference": "27fe9fd23dc64bad4775824dcaf61e398007450d",
                 "shasum": ""
             },
             "require": {
@@ -3431,7 +3431,7 @@
             ],
             "support": {
                 "issues": "https://github.com/veewee/xml/issues",
-                "source": "https://github.com/veewee/xml/tree/4.10.0"
+                "source": "https://github.com/veewee/xml/tree/4.11.0"
             },
             "funding": [
                 {
@@ -3439,7 +3439,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-27T12:03:55+00:00"
+            "time": "2026-04-10T05:38:48+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3586,16 +3586,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "2.1.6",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "ff31ad6efc62e66e518fbab1cde3453d389bcdc8"
+                "reference": "eb0d790f735ba6cff25c683a85a1da0eadeff9e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/ff31ad6efc62e66e518fbab1cde3453d389bcdc8",
-                "reference": "ff31ad6efc62e66e518fbab1cde3453d389bcdc8",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/eb0d790f735ba6cff25c683a85a1da0eadeff9e4",
+                "reference": "eb0d790f735ba6cff25c683a85a1da0eadeff9e4",
                 "shasum": ""
             },
             "require": {
@@ -3642,9 +3642,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/2.1.6"
+                "source": "https://github.com/webmozarts/assert/tree/2.3.0"
             },
-            "time": "2026-02-27T10:28:38+00:00"
+            "time": "2026-04-11T10:33:05+00:00"
         }
     ],
     "packages-dev": [
