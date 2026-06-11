@@ -1,4 +1,4 @@
-FROM composer:2.10.1@sha256:41959f55087549989efcdfe953977b64e98e07ca0d7532d7e4b7fe1a90cc4159 AS build-env
+FROM composer:2.10.1@sha256:65a161be39c6d30053492f46dcb4f3fe7a8beb6a1bcf92f79d5b41aa45604497 AS build-env
 
 ENV PHP_EXTENSIONS="bcmath intl xsl"
 
