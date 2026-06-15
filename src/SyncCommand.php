@@ -7,12 +7,16 @@ namespace DrupalSecurityJira;
 use Dotenv\Dotenv;
 use DrupalSecurityJira\DrupalOrg\ProjectFetcher;
 use DrupalSecurityJira\SystemStatus\Fetcher;
+use Psr\Log\LoggerInterface;
 use Reload\JiraSecurityIssue;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpClient\Retry\GenericRetryStrategy;
+use Symfony\Component\HttpClient\RetryableHttpClient;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class SyncCommand extends Command
 {
@@ -34,7 +38,7 @@ class SyncCommand extends Command
 
         $logger->debug("Fetching data from {$host}");
         $fetcher = new Fetcher(
-            HttpClient::create(),
+            $this->createHttpClient($logger),
             $host,
             $token,
             $key
@@ -53,7 +57,7 @@ class SyncCommand extends Command
         // Filter away projects with no known version.
         $projectVersionMap = array_filter($projectVersionMap);
 
-        $projectFetcher = new ProjectFetcher(HttpClient::create());
+        $projectFetcher = new ProjectFetcher($this->createHttpClient($logger));
 
         $filters = [
             "Identify projects on Drupal.org" =>
@@ -118,5 +122,18 @@ EOT;
         }, array_keys($securedProjectsVersionMap), $securedProjectsVersionMap);
 
         return self::SUCCESS;
+    }
+
+    /**
+     * Create an HTTP client that retries failed requests with exponential
+     * backoff, retrying up to 3 times before giving up.
+     */
+    private function createHttpClient(LoggerInterface $logger): HttpClientInterface
+    {
+        // GenericRetryStrategy defaults to a 1000ms initial delay and a
+        // multiplier of 2.0, i.e. exponential backoff (1s, 2s, 4s, ...).
+        $strategy = new GenericRetryStrategy();
+
+        return new RetryableHttpClient(HttpClient::create(), $strategy, 3, $logger);
     }
 }
