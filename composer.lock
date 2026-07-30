@@ -3430,16 +3430,16 @@
         },
         {
             "name": "veewee/xml",
-            "version": "4.12.0",
+            "version": "4.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/veewee/xml.git",
-                "reference": "1ea4b37ccfc4e04f6b9ddf6348c99a487ba3bffe"
+                "reference": "788d7249b80c2dc77b9f22516761cf64da78649c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/veewee/xml/zipball/1ea4b37ccfc4e04f6b9ddf6348c99a487ba3bffe",
-                "reference": "1ea4b37ccfc4e04f6b9ddf6348c99a487ba3bffe",
+                "url": "https://api.github.com/repos/veewee/xml/zipball/788d7249b80c2dc77b9f22516761cf64da78649c",
+                "reference": "788d7249b80c2dc77b9f22516761cf64da78649c",
                 "shasum": ""
             },
             "require": {
@@ -3511,7 +3511,7 @@
             ],
             "support": {
                 "issues": "https://github.com/veewee/xml/issues",
-                "source": "https://github.com/veewee/xml/tree/4.12.0"
+                "source": "https://github.com/veewee/xml/tree/4.13.0"
             },
             "funding": [
                 {
@@ -3519,7 +3519,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-06-26T07:00:46+00:00"
+            "time": "2026-07-23T06:36:05+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
