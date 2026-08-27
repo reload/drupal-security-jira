@@ -5,7 +5,7 @@ updates:
     target-branch: v2
     directory: "/"
     schedule:
-      interval: daily
+      interval: monthly
       time: '04:00'
       timezone: Europe/Copenhagen
     open-pull-requests-limit: 10
@@ -13,7 +13,7 @@ updates:
     target-branch: v2
     directory: "/"
     schedule:
-      interval: daily
+      interval: monthly
       time: '04:00'
       timezone: Europe/Copenhagen
     open-pull-requests-limit: 10
@@ -21,14 +21,14 @@ updates:
     target-branch: v2
     directory: "/"
     schedule:
-      interval: daily
+      interval: monthly
       time: '04:00'
       timezone: Europe/Copenhagen
   - package-ecosystem: github-actions
     target-branch: main
     directory: "/"
     schedule:
-      interval: daily
+      interval: monthly
       time: '04:00'
       timezone: Europe/Copenhagen
     open-pull-requests-limit: 10
@@ -36,7 +36,7 @@ updates:
     target-branch: main
     directory: "/"
     schedule:
-      interval: daily
+      interval: monthly
       time: '04:00'
       timezone: Europe/Copenhagen
     open-pull-requests-limit: 10
@@ -44,6 +44,6 @@ updates:
     target-branch: main
     directory: "/"
     schedule:
-      interval: daily
+      interval: monthly
       time: '04:00'
       timezone: Europe/Copenhagen
